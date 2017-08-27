@@ -19,6 +19,7 @@ public class Stylist {
     public int getId() {
       return id;
     }
+    
 // to return list of the stylists within the database
     public static List<Stylist> all() {
      String sql = "SELECT id, description FROM stylists";

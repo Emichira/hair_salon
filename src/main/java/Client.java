@@ -9,23 +9,30 @@ public class Client {
   private boolean completed;
   private LocalDateTime createdAt;
   private int id;
+  private int stylistId;
+
 
 // constructor client
-public Client (String description) {
+public Client (String description, int stylistId) {
   this.description = description;
   completed = true;
   createdAt = LocalDateTime.now();
+  this.stylistId = stylistId;
 }
 
-  //to get description
+//to get description
   public String getDescription() {
     return description;
   }
 
-  // to get ids of the clients
-      public int getId() {
-        return id;
-      }
+// to get ids of the clients
+  public int getId() {
+    return id;
+  }
+  public int getStylistId() {
+    return stylistId;
+  }
+
   //updating  methods
       public void update(String description) {
         try(Connection con = DB.sql2o.open()) {
