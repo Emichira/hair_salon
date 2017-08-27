@@ -48,5 +48,16 @@ public class ClientTest {
         Client myClient = new Client("Jessicah", 1);
         assertEquals(LocalDateTime.now().getDayOfWeek(), myClient.getCreatedAt());
       }
+      // test used to enhance relationship between parent-class stylist and child-class
+      @Test
+          public void save_savesStylistIdIntoDB_true() {
+            Stylist myStylist = new Stylist("Janet");
+            myStylist.save();
+            Client myClient = new Client("Jessicah", myStylist.getId());
+            myClient.save();
+            Client savedClient = Client.find(myClient.getId());
+            assertEquals(savedClient.getStylistId(), myStylist.getId());
+          }
+
 
 }
