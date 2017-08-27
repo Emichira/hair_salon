@@ -27,7 +27,7 @@ public class ClientTest {
         myClient.save();
         assertTrue(myClient.getId() > 0);
       }
-      //locating specific Tasks using their unique ID
+      //locating specific Clients using their unique ID
       @Test
       public void find_returnsClientWithSameId_secondClient() {
         Client firstClient = new Client("Jessicah", 1);
@@ -35,6 +35,18 @@ public class ClientTest {
         Client secondClient = new Client("Edna", 1);
         secondClient.save();
         assertEquals(Client.find(secondClient.getId()), secondClient);
+      }
+
+      @Test
+      public void isCompleted_isFalseAfterInstantiation_false() {
+        Client myClient = new Client("Jessicah", 1);
+        assertEquals(false, myClient.isCompleted());
+      }
+
+      @Test
+      public void getCreatedAt_instantiatesWithCurrentTime_today() {
+        Client myClient = new Client("Jessicah", 1);
+        assertEquals(LocalDateTime.now().getDayOfWeek(), myClient.getCreatedAt());
       }
 
 }

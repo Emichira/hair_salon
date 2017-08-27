@@ -6,11 +6,15 @@ import org.sql2o.*;
 
 public class Client {
   private String description;
+  private boolean completed;
+  private LocalDateTime createdAt;
   private int id;
 
 // constructor client
 public Client (String description) {
   this.description = description;
+  completed = true;
+  createdAt = LocalDateTime.now();
 }
 
 //to get description
