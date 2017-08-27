@@ -50,14 +50,30 @@ public class ClientTest {
       }
       // test used to enhance relationship between parent-class stylist and child-class
       @Test
-          public void save_savesStylistIdIntoDB_true() {
-            Stylist myStylist = new Stylist("Janet");
-            myStylist.save();
-            Client myClient = new Client("Jessicah", myStylist.getId());
-            myClient.save();
-            Client savedClient = Client.find(myClient.getId());
-            assertEquals(savedClient.getStylistId(), myStylist.getId());
-          }
-
+      public void save_savesStylistIdIntoDB_true() {
+        Stylist myStylist = new Stylist("Janet");
+        myStylist.save();
+        Client myClient = new Client("Jessicah", myStylist.getId());
+        myClient.save();
+        Client savedClient = Client.find(myClient.getId());
+        assertEquals(savedClient.getStylistId(), myStylist.getId());
+      }
+      // test used for updates
+      @Test
+      public void update_updatesClientDescription_true() {
+        Client myClient = new Client("Jessicah", 1);
+        myClient.save();
+        myClient.update("Winnie");
+        assertEquals("Winnie", Client.find(myClient.getId()).getDescription());
+      }
+      // test used to delete clients
+      @Test
+      public void delete_deletesClient_true() {
+        Client myClient = new Client("Jessicah", 1);
+        myClient.save();
+        int myClientId = myClient.getId();
+        myClient.delete();
+        assertEquals(null, Client.find(myClientId));
+      }
 
 }
