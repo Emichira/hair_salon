@@ -5,6 +5,7 @@ import org.sql2o.*;
 
 public class Stylist {
   private String description;
+  private int id;
 
   public Stylist(String description) {
     this.description = description;
@@ -14,4 +15,8 @@ public class Stylist {
     public String getDescription() {
      return description;
    }
+ // to return the ids of the stylists
+    public int getId() {
+      return id;
+    }
 }

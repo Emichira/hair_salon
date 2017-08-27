@@ -19,5 +19,13 @@ public class StylistTest {
        assertEquals(true, Stylist.all().get(0).equals(firstStylist));
        assertEquals(true, Stylist.all().get(1).equals(secondStylist));
      }
+     // test used for assigning id to stylists
+   @Test
+     public void save_assignsIdToObject() {
+       Stylist myStylist = new Stylist("Janet");
+       myStylist.save();
+       Stylist savedStylist = Stylist.all().get(0);
+       assertEquals(myStylist.getId(), savedStylist.getId());
+     }
 
 }
