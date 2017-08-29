@@ -33,6 +33,7 @@ public Client (String description, int stylistId) {
     return stylistId;
   }
 
+  // to hold and return all client database entries
   public static List<Client> all() {
     String sql = "SELECT id, description, stylistId  FROM clients";
     try(Connection con = DB.sql2o.open()) {
@@ -61,6 +62,17 @@ public Client (String description, int stylistId) {
           .addParameter("stylistId", this.stylistId)
           .executeUpdate()
           .getKey();
+      }
+    }
+
+  // to enhance the id is found and used within the class
+    public static Client find(int id) {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "SELECT * FROM clients where id=:id";
+        Client client = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Client.class);
+        return client;
       }
     }
 
