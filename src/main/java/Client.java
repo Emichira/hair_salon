@@ -33,6 +33,19 @@ public Client (String description, int stylistId) {
     return stylistId;
   }
 
+  // to override the methods to prevent data redundancy
+    @Override
+    public boolean equals(Object otherClient) {
+      if (!(otherClient instanceof Client)) {
+        return false;
+      } else {
+        Client newClient = (Client) otherClient;
+        return this.getDescription().equals(newClient.getDescription()) &&
+             this.getId() == newClient.getId() &&
+             this.getStylistId() == newClient.getStylistId();
+      }
+    }
+
   //updating  methods
       public void update(String description) {
         try(Connection con = DB.sql2o.open()) {

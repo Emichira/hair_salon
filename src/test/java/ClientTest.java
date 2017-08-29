@@ -3,6 +3,11 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class ClientTest {
+  
+  // connectivity with the database
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
+
   //  test to return all client instances as true
     @Test
     public void all_returnsAllInstancesOfClient_true() {
