@@ -33,6 +33,13 @@ public Client (String description, int stylistId) {
     return stylistId;
   }
 
+  public static List<Client> all() {
+    String sql = "SELECT id, description, stylistId  FROM clients";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Client.class);
+    }
+  }
+
   // to override the methods to prevent data redundancy
     @Override
     public boolean equals(Object otherClient) {

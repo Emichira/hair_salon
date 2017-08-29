@@ -3,7 +3,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class ClientTest {
-  
+
   // connectivity with the database
   @Rule
   public DatabaseRule database = new DatabaseRule();
@@ -62,6 +62,15 @@ public class ClientTest {
         myClient.save();
         Client savedClient = Client.find(myClient.getId());
         assertEquals(savedClient.getStylistId(), myStylist.getId());
+      }
+
+      //  to assign and modify unique ids
+      @Test
+      public void save_assignsIdToStylist() {
+        Client myClient = new Client("Edna", 1);
+        myClient.save();
+        Client savedClient = Client.all().get(0);
+        assertEquals(myClient.getId(), savedClient.getId());
       }
       // test used for updates
       @Test
