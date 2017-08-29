@@ -28,16 +28,27 @@ public class Stylist {
      }
    }
 
-   //method for saving stylists in the database
-   public void save() {
-         try(Connection con = DB.sql2o.open()) {
-           String sql = "INSERT INTO stylists(description) VALUES (:description)";
-           this.id = (int) con.createQuery(sql, true)
-             .addParameter("description", this.description)
-             .executeUpdate()
-             .getKey();
-         }
+ //method for saving stylists in the database
+ public void save() {
+       try(Connection con = DB.sql2o.open()) {
+         String sql = "INSERT INTO stylists(description) VALUES (:description)";
+         this.id = (int) con.createQuery(sql, true)
+           .addParameter("description", this.description)
+           .executeUpdate()
+           .getKey();
        }
+     }
+
+   // to find stylists based on their id
+   public static Stylist find(int id) {
+           try(Connection con = DB.sql2o.open()) {
+             String sql = "SELECT * FROM stylists where id=:id";
+             Stylist stylist = con.createQuery(sql)
+               .addParameter("id", id)
+               .executeAndFetchFirst(Stylist.class);
+             return stylist;
+           }
+         }
 
 
 }
