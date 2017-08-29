@@ -65,7 +65,7 @@ public Client (String description, int stylistId) {
       }
     }
 
-  // to enhance the id is found and used within the class
+  // to find clients based on id
     public static Client find(int id) {
       try(Connection con = DB.sql2o.open()) {
         String sql = "SELECT * FROM clients where id=:id";
