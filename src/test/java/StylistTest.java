@@ -1,12 +1,13 @@
-import org.junit.*;
-import static org.junit.Assert.*;
+import java.util.List;
+import java.util.ArrayList;
+import org.sql2o.*;
 
 public class StylistTest {
 
   // connectivity with the database
   @Rule
     public DatabaseRule database = new DatabaseRule();
-    
+
   //  test to return all stylist instances as true
   @Test
     public void equals_returnsTrueIfDescriptionsAretheSame() {
@@ -79,7 +80,7 @@ public class StylistTest {
       }
       //test used to check the saved stylists in the database
       @Test
-        public void save_savesIntoDatabase_true() {
+        public void save_insertsObjectIntoDatabase_true() {
           Stylist myStylist = new Stylist("Sarah", "image");
           myStylist.save();
           assertTrue(Stylist.all().get(0).equals(myStylist));
