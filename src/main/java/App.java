@@ -8,12 +8,15 @@ public class App {
   public static void main(String[] args) {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
+    ProcessBuilder process = new ProcessBuilder();
     Integer port;
-    if (process.environment().get("PORT") != null) {
-        port = Integer.parseInt(process.environment().get("PORT"));
+    if (process.environment().get("PORT") !=null) {
+      port = Integer.parseInt(process.environment().get("PORT"));
     } else {
-        port = 4567;
+      port = 4567;
     }
+
+    setPort(port);
 
     // root route for rendering our home page
       get("/", (request, response) -> {
@@ -33,7 +36,7 @@ public class App {
    // route to display all clients
      get("/clients", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
-        // model.put("clients", Client.all());
+        model.put("clients", Client.all());
         model.put("template", "templates/clients.vtl");
         return new ModelAndView(model, layout);
        }, new VelocityTemplateEngine());
@@ -44,6 +47,8 @@ public class App {
         Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("stylistId")));
         String description = request.queryParams("description");
         Client newClient = new Client(description, stylist.getId());
+        newClient.save();
+        model.put("stylist", stylist);
         model.put("template", "templates/success.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
@@ -99,18 +104,6 @@ public class App {
           model.put("stylist", stylist);
           model.put("client", client);
           model.put("template", "templates/client.vtl");
-          return new ModelAndView(model, layout);
-          }, new VelocityTemplateEngine());
-
-      // a route to process new-client form submission
-        post("/clients", (request, response) -> {
-          Map<String, Object> model = new HashMap<String, Object>();
-          Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("stylistId")));
-          String description = request.queryParams("description");
-          Client newClient = new Client(description, stylist.getId());
-          newClient.save();
-          model.put("stylist", stylist);
-          model.put("template", "templates/stylist-client-success.vtl");
           return new ModelAndView(model, layout);
           }, new VelocityTemplateEngine());
 

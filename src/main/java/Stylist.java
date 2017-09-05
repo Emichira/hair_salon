@@ -6,12 +6,9 @@ import org.sql2o.*;
 public class Stylist {
   private String description;
   private int id;
-  private String image;
 
-
-  public Stylist(String description, String image) {
+  public Stylist(String description) {
     this.description = description;
-    this.image = image;
   }
 
   //returns the description of the stylist
@@ -23,14 +20,9 @@ public class Stylist {
       return id;
     }
 
-    // returns the image of stylist
-   public String getImage() {
-    return image;
-    }
-
     // returns list of stylists within the database
     public static List<Stylist> all() {
-      String sql = "SELECT id, description, image FROM stylists";
+      String sql = "SELECT id, description FROM stylists";
       try(Connection con = DB.sql2o.open()) {
         return con.createQuery(sql).executeAndFetch(Stylist.class);
       }
@@ -49,10 +41,9 @@ public class Stylist {
  //method for saving stylists in the database
  public void save() {
        try(Connection con = DB.sql2o.open()) {
-         String sql = "INSERT INTO stylists(description, image) VALUES (:description, :image)";
+         String sql = "INSERT INTO stylists(description) VALUES (:description)";
          this.id = (int) con.createQuery(sql, true)
            .addParameter("description", this.description)
-           .addParameter("image", this.image)
            .executeUpdate()
            .getKey();
        }
@@ -76,18 +67,16 @@ public class Stylist {
        } else {
          Stylist newStylist = (Stylist) otherStylist;
          return this.getDescription().equals(newStylist.getDescription()) &&
-               this.getImage().equals(newStylist.getImage()) &&
                this.getId() == newStylist.getId();
        }
      }
 
  //update methods
-     public void update(String description, String image) {
+     public void update(String description) {
        try(Connection con = DB.sql2o.open()) {
-         String sql = "UPDATE stylists SET (description, image)= (:description, :image) WHERE id = :id";
+         String sql = "UPDATE stylists SET (description)= (:description) WHERE id = :id";
          con.createQuery(sql)
          .addParameter("description", description)
-         .addParameter("image", image)
          .addParameter("id", id)
          .executeUpdate();
        }

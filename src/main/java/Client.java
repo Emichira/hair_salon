@@ -7,7 +7,6 @@ import org.sql2o.*;
 public class Client {
   private String description;
   private boolean completed;
-  private LocalDateTime createdAt;
   private int id;
   private int stylistId;
 
@@ -16,7 +15,6 @@ public class Client {
 public Client (String description, int stylistId) {
   this.description = description;
   completed = true;
-  createdAt = LocalDateTime.now();
   this.stylistId = stylistId;
 }
 
