@@ -2,7 +2,7 @@
 Emmanuel Michira
 
 # Description
-A simple App for a hair-saloon.
+A simple App for a hair-saloon. The owner of the Salon may add stylists. The stylists work independently on their clients hence, a client can only belong to a specific stylist.
 
 # Github-link
 
@@ -16,3 +16,7 @@ You will need the following things properly installed on your computer.
 * maven
 * heroku
 * postgres
+
+##Technologies Used
+
+Java, Spark, Velocity, jUnit, Postgres/PSQL.
