@@ -1,64 +1,123 @@
+.layout {
+  margin: auto;
+}
+
 body {
-  background-image: url(../images/simba.jpg);
+  background-image: url(../images/aa.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-#icon {
-  width: 6%;
-  height: 6%;
+h2 {
+  color: aquamarine;
+}
+#header {
+  text-align: center;
+  color: black;
+}
+#home {
+  color: black;
 }
 
-#main {
-  padding-top: 5%;
-}
-#stylists {
-  display: flex;
-  flex-wrap: wrap;
+.form-control {
+  width: 40%;
 }
 
-.wolf {
-  display: flex;
-  justify-content: center;
+.ro1 {
+  margin-bottom: 70px;
+}
+
+.index {
+  margin-left: 145px;
+}
+
+a {
+  color: black;
+}
+
+label {
+  color: black;
 }
 
 @import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
-#footer {
-  border-top: 5px solid #CDB380;
-  background: #033649 none repeat scroll 0% 0%;
-  padding-top: 30px;
-  margin-top: 60px;
-  clear: both;
-  color: #AAA;
-  display: block;
+
+#top-bar.animated-header {
+  background: #dedede;
+  box-shadow: none;
 }
 
-#footer .widgettitle {
-  margin: 0px;
-  padding: 0px 0px 15px;
-  border-bottom: medium none;
+#top-bar {
+  background: #fff;
+  color: #fff;
+  -webkit-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid grey;
 }
 
-#footer h4 {
-  color: #FFF;
+#top-bar .main-menu li>a {
+  color: #444;
 }
 
-#footer ul {
-  list-style: outside none none;
+#top-bar .main-menu li {
+  position: relative;
 }
 
-#footer li {
-  padding: 7px 0px;
-  border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
-  margin: 0px;
+#top-bar .main-menu li a {
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: .3s all;
+  -o-transition: .3s all;
+  transition: .3s all;
+  text-transform: uppercase;
 }
 
-#footer li a {
-  color: #DDD;
+#top-bar .main-menu li a:hover {
+  color: #02bdd5;
 }
 
-#sub-floor {
-  color: #AAA;
-  background: #031634 none repeat scroll 0% 0%;
-  padding: 10px 0px;
+.navbar-default .navbar-nav>li>a:hover {
+  color: #02bdd5;
+}
+
+.navbar.navbar-default {
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.navbar.navbar-default .navbar-toggle {
+  margin-top: 32px;
+}
+
+.navbar-header .navbar-brand {
+  padding: 5px 0;
+}
+
+.navbar-header .navbar-brand a {
+  height: auto;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle {
+  background: #444;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
+
+.navbar-collapse {
+  text-align: center;
+}
+.navbar {
+  margin-bottom: 0px;
+}
+
+p {
+  color: #727272;
 }

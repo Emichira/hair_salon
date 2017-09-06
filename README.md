@@ -4,7 +4,7 @@ Emmanuel Michira
 # Description
 A simple App for a hair-saloon.
 
-<!-- # Github-link -->
+# Github-link
 
 ## Prerequisites
 
